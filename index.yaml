@@ -1,0 +1,34 @@
+apiVersion: v1
+entries:
+  generic-chart:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2026-07-10T12:58:48.166498168Z"
+    description: A reusable Helm chart for deploying apps with multiple sites
+    digest: b2400f9778ce2cb5051d4f8a03b795fe382620c3df0ce17f215689c244cd0ede
+    keywords:
+    - app
+    - sites
+    - ingress
+    - cert-manager
+    name: generic-chart
+    type: application
+    urls:
+    - https://tarhvar.github.io/tarhvar-devops/generic-chart-0.1.0.tgz
+    version: 0.1.0
+  sites:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2026-07-10T12:58:48.166759927Z"
+    description: Creates Ingress + Certificate for one or more sites
+    digest: 082a6e32782ddb568e484732d4f67f34d61f0381febbf595476040d976362888
+    keywords:
+    - ingress
+    - cert-manager
+    - tls
+    name: sites
+    type: application
+    urls:
+    - https://tarhvar.github.io/tarhvar-devops/sites-0.1.0.tgz
+    version: 0.1.0
+generated: "2026-07-10T12:58:48.166044321Z"

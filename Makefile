@@ -13,7 +13,7 @@ package: $(CHARTS)
 	for chart in $^; do \
 		helm package $$chart -d $(OUT); \
 	done
-	helm repo index $(OUT) --url https://tarhvar.github.io/tarhvar-devops
+	helm repo index $(OUT) --url https://tarhvar-dev.github.io/helm-charts
 
 clean:
 	rm -rf $(OUT)

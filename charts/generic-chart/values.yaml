@@ -28,14 +28,18 @@ service:
 
 ingress:
   className: traefik
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+  annotations: {}
   host: example.com
   path: /
   pathType: Prefix
+  # Set to use an existing TLS secret (disables cert generation)
+  tlsSecretName: ""
 
 certificate:
   enabled: true
+  issuerRef:
+    name: letsencrypt-wildcard
+    kind: ClusterIssuer
 
 envFrom: []
 # - secretRef:

@@ -8,7 +8,12 @@ metadata:
     {{- end }}
 spec:
   ingressClassName: {{ .Values.ingress.className }}
-  {{- if .Values.certificate.enabled }}
+  {{- if .Values.ingress.tlsSecretName }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      secretName: {{ .Values.ingress.tlsSecretName }}
+  {{- else if .Values.certificate.enabled }}
   tls:
     - hosts:
         - {{ .Values.ingress.host }}

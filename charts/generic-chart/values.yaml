@@ -37,6 +37,10 @@ ingress:
 certificate:
   enabled: true
 
+envFrom: []
+# - secretRef:
+#     name: my-secret
+
 resources: {}
 
 livenessProbe:

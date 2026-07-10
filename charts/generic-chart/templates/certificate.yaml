@@ -1,3 +1,4 @@
+{{- if .Values.certificate.enabled }}
 {{- range .Values.sites }}
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -11,4 +12,5 @@ spec:
   dnsNames:
     - {{ .host }}
 ---
+{{- end }}
 {{- end }}

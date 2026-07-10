@@ -3,6 +3,9 @@ service:
   name: ""
   port: 80
 
+certificate:
+  enabled: true
+
 ingress:
   className: traefik
   annotations:

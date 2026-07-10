@@ -31,7 +31,10 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 
-# List of sites with their own ingress + cert-manager certificate
+certificate:
+  enabled: true
+
+sites:
 sites:
   - host: example.com
     paths:

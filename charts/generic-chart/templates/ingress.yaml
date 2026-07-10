@@ -9,10 +9,12 @@ metadata:
     {{- end }}
 spec:
   ingressClassName: {{ $.Values.ingress.className }}
+  {{- if $.Values.certificate.enabled }}
   tls:
     - hosts:
         - {{ .host }}
       secretName: {{ include "app.fullname" $ }}-{{ .host | replace "." "-" }}-tls
+  {{- end }}
   rules:
     - host: {{ .host }}
       http:

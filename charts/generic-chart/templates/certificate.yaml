@@ -1,16 +1,13 @@
 {{- if .Values.certificate.enabled }}
-{{- range .Values.sites }}
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: {{ include "app.fullname" $ }}-{{ .host | replace "." "-" }}
+  name: {{ include "app.fullname" . }}
 spec:
-  secretName: {{ include "app.fullname" $ }}-{{ .host | replace "." "-" }}-tls
+  secretName: {{ include "app.fullname" . }}-tls
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-    - {{ .host }}
----
-{{- end }}
+    - {{ .Values.ingress.host }}
 {{- end }}

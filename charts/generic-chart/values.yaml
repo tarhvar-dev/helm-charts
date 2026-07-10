@@ -30,20 +30,12 @@ ingress:
   className: traefik
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
+  host: example.com
+  path: /
+  pathType: Prefix
 
 certificate:
   enabled: true
-
-sites:
-sites:
-  - host: example.com
-    paths:
-      - path: /
-        pathType: Prefix
-  - host: example2.com
-    paths:
-      - path: /
-        pathType: Prefix
 
 resources: {}
 

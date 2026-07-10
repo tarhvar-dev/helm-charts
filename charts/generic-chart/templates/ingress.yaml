@@ -1,32 +1,27 @@
-{{- range .Values.sites }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "app.fullname" $ }}-{{ .host | replace "." "-" }}
+  name: {{ include "app.fullname" . }}
   annotations:
-    {{- with $.Values.ingress.annotations }}
+    {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
 spec:
-  ingressClassName: {{ $.Values.ingress.className }}
-  {{- if $.Values.certificate.enabled }}
+  ingressClassName: {{ .Values.ingress.className }}
+  {{- if .Values.certificate.enabled }}
   tls:
     - hosts:
-        - {{ .host }}
-      secretName: {{ include "app.fullname" $ }}-{{ .host | replace "." "-" }}-tls
+        - {{ .Values.ingress.host }}
+      secretName: {{ include "app.fullname" . }}-tls
   {{- end }}
   rules:
-    - host: {{ .host }}
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
-          {{- range .paths }}
-          - path: {{ .path }}
-            pathType: {{ .pathType }}
+          - path: {{ .Values.ingress.path }}
+            pathType: {{ .Values.ingress.pathType }}
             backend:
               service:
-                name: {{ include "app.fullname" $ }}
+                name: {{ include "app.fullname" . }}
                 port:
-                  number: {{ $.Values.service.port }}
-          {{- end }}
----
-{{- end }}
+                  number: {{ .Values.service.port }}

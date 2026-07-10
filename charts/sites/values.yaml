@@ -1,0 +1,15 @@
+# -- Backend service that the ingress routes to
+service:
+  name: ""
+  port: 80
+
+ingress:
+  className: traefik
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+
+sites:
+  - host: example.com
+    paths:
+      - path: /
+        pathType: Prefix
